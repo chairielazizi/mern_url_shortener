@@ -1,8 +1,38 @@
 import * as React from "react";
+import { API_URL, UrlData } from "../../api/config";
+import { Link } from "react-router";
 
-interface IDataTableProps {}
+interface IDataTableProps {
+  data: UrlData[];
+}
 
-const DataTable: React.FunctionComponent<IDataTableProps> = () => {
+const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
+  const { data } = props;
+  console.log("Data for table: ", data);
+  const renderTableData = () => {
+    return data.map((item) => {
+      return (
+        <tr
+          key={item._id}
+          className="border-b text-white bg-gray-700 hover:bg-white hover:text-gray-900 hover:font-semibold"
+        >
+          <td className="px-6 py-3 break-words">
+            <Link to={item.originalURL} target="_blank">
+              {item.originalURL}
+            </Link>
+          </td>
+          <td className="px-6 py-3 break-words">
+            <Link to={`${API_URL}/shortUrl/${item.shortURL}`} target="_blank">
+              {item.shortURL}
+            </Link>
+          </td>
+          <td className="px-6 py-3">{item.clicks}</td>
+          <td className="px-6 py-3">action</td>
+        </tr>
+      );
+    });
+  };
+
   return (
     <div className="container mx-auto pt-2 pb-10">
       <div className="relative overflow-x-auto shadow-sm sm:rounded-lg">
@@ -23,7 +53,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = () => {
               </th>
             </tr>
           </thead>
-          <tbody>{renderTableData}</tbody>
+          <tbody>{renderTableData()}</tbody>
         </table>
       </div>
     </div>
