@@ -1,8 +1,23 @@
 import * as React from "react";
+import axios from "axios";
+import { API_URL } from "../../api/config";
 
 interface IFormContainerProps {}
 
 const FormContainer: React.FunctionComponent<IFormContainerProps> = () => {
+  const [originalUrl, setOriginalUrl] = React.useState<string>("");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await axios.post(`${API_URL}/shortUrl`, {
+        originalURL: originalUrl,
+      });
+      setOriginalUrl("");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="container mx-auto p-2">
       <div className="form my-8 rounded-xl bg-cover">
@@ -16,7 +31,7 @@ const FormContainer: React.FunctionComponent<IFormContainerProps> = () => {
             hosted on Render
           </p>
 
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="flex">
               <div className="relative w-full bg-white rounded-xl">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none text-slate-900">
@@ -27,6 +42,8 @@ const FormContainer: React.FunctionComponent<IFormContainerProps> = () => {
                   placeholder="add your link"
                   required
                   className="block w-full p-4 ps-34 text-sm font-semibold text-gray-800 bg-white focus:bg-blue-50 border border-gray-500 focus:ring-blue-500 focus:border-blue-500 outline-none rounded-xl"
+                  value={originalUrl}
+                  onChange={(e) => setOriginalUrl(e.target.value)}
                 />
                 <button
                   type="submit"
