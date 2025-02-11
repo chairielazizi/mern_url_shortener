@@ -37,6 +37,6 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+//routes
+import shortUrlRoutes from "../routes/shortUrlRoutes";
+app.use("/api", shortUrlRoutes);
