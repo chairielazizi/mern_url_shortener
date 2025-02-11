@@ -4,6 +4,7 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import path from "path";
 
 const app = express();
 const databaseUrl = process.env.DATABASE_URL;
@@ -36,6 +37,9 @@ app.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // allow these methods
   })
 );
+
+//add static files from frontend build
+app.use(express.static(path.join(__dirname, "../build")));
 
 //routes
 import shortUrlRoutes from "../routes/shortUrlRoutes";
