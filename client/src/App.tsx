@@ -1,8 +1,16 @@
-import { useState } from "react";
-import "./App.css";
+import * as React from "react";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
-function App() {
-  return <h1 className="text-3xl font-bold underline">Hello</h1>;
-}
+interface IAppProps {}
+
+const App: React.FunctionComponent<IAppProps> = () => {
+  return (
+    <>
+      <Header />;
+      <Footer />
+    </>
+  );
+};
 
 export default App;
