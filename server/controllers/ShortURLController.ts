@@ -23,7 +23,7 @@ export const getAllURL = async (req: Request, res: Response) => {
   try {
     const shortURLs = await ShortURLModel.find();
     if (shortURLs) {
-      res.status(200).send({ shortURLs });
+      res.status(200).send(shortURLs);
     } else {
       res.status(404).send({ message: "No URLs found" });
     }
