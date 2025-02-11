@@ -1,0 +1,24 @@
+###
+GET http://localhost:3000/api/shortUrl
+
+###
+POST http://localhost:3000/api/shortUrl
+Content-Type: application/json
+
+{
+    "originalURL": "https://cloud.mongodb.com/v2/679b57b12992c44700319242#/metrics/replicaSet/679b5876e1d7443dd05180aa/explorer/sample_mflix/comments/find"
+}
+
+###
+POST http://localhost:3000/api/shortUrl
+Content-Type: application/json
+
+{
+    "originalURL": "https://doki-theme.unthrottled.io/themes/"
+}
+
+###
+GET http://localhost:3000/api/shortUrl/bQq-1Gik-W
+
+###
+DELETE http://localhost:3000/api/shortUrl/67aab107d4f9e0846c2f4537
