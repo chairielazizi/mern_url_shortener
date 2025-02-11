@@ -1,6 +1,7 @@
 import * as React from "react";
 import { API_URL, UrlData } from "../../api/config";
 import { Link } from "react-router";
+import axios from "axios";
 
 interface IDataTableProps {
   data: UrlData[];
@@ -9,6 +10,20 @@ interface IDataTableProps {
 const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
   const { data } = props;
   console.log("Data for table: ", data);
+
+  const copyToClipboard = async (url: string) => {
+    try {
+      await navigator.clipboard.writeText(`${API_URL}/shortUrl/${url}`);
+      alert(`URL copied: ${API_URL}/shortUrl/${url}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const deleteUrl = async (id: string) => {
+    const res = await axios.delete(`${API_URL}/shortUrl/${id}`);
+    console.log(res);
+  };
+
   const renderTableData = () => {
     return data.map((item) => {
       return (
@@ -27,7 +42,18 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
             </Link>
           </td>
           <td className="px-6 py-3">{item.clicks}</td>
-          <td className="px-6 py-3">action</td>
+          <td className="px-6 py-3 text-xl">
+            <div className="flex content-center">
+              <i
+                onClick={() => copyToClipboard(item.shortURL)}
+                className="fa fa-solid fa-copy pr-2 cursor-pointer"
+              ></i>
+              <i
+                onClick={() => deleteUrl(item._id)}
+                className="fa-solid fa-trash-can text-red-500 cursor-pointer"
+              ></i>
+            </div>
+          </td>
         </tr>
       );
     });
