@@ -7,11 +7,12 @@ interface IAppProps {}
 
 const App: React.FunctionComponent<IAppProps> = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
       <Container />
+      <div className="flex-grow"></div>
       <Footer />
-    </>
+    </div>
   );
 };
 
