@@ -49,11 +49,11 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
             </Link>
           </td>
           <td className="px-6 py-3">{item.clicks}</td>
-          <td className="px-6 py-3 text-xl">
+          <td className="px-6 py-3 text-xl table-action">
             <div className="flex content-center">
               <i
                 onClick={() => copyToClipboard(item.shortURL)}
-                className="fa fa-solid fa-copy pr-2 cursor-pointer"
+                className="fa fa-solid fa-copy pr-2 cursor-pointer "
               ></i>
               <i
                 onClick={() => deleteUrl(item._id)}
@@ -73,16 +73,16 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
         <table className="w-full table-fixed text-sm text-left  text-gray-500 dark:text-gray-400 rtl:text-right">
           <thead className="text-md uppercase text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3 w-6/12">
+              <th scope="col" className="px-6 py-3 w-6/12 table-ori-url">
                 Original URL
               </th>
-              <th scope="col" className="px-6 py-3 w-3/12">
+              <th scope="col" className="px-6 py-3 w-3/12 table-short-url">
                 Short URL
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 table-action">
                 Clicks
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 table-action">
                 Action
               </th>
             </tr>

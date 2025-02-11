@@ -10,7 +10,9 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
           <a href="https://aku.airiel.space" target="_blank">
             <img src="./logo.png" alt="website logo" className="w-16 mr-5" />
           </a>
-          <div className="text-4xl text-white">Airiel's URL Shortener</div>
+          <div className="text-4xl text-white sm-screen">
+            Airiel's URL Shortener
+          </div>
         </nav>
       </div>
     </div>

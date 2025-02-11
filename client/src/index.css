@@ -13,6 +13,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  width: 100%;
 }
 
 /* a {
@@ -79,4 +81,46 @@ button:focus-visible {
 
 .form {
   background-image: url("https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+}
+
+/* For small screens (mobile phones) */
+@media only screen and (max-width: 600px) {
+  .sm-screen {
+    text-align: center;
+    font-size: 20px;
+  }
+  .table-ori-url {
+    width: calc(5/12 * 100%);
+    /* padding-left:0; */
+  }
+  .table-short-url {
+    /* width: calc(2/12 * 100%); */
+    padding-right:0;
+  }
+  .table-action {
+    padding-right:0;
+    padding-left:0;
+  }
+  .sm-form {
+    padding: 1rem;
+  }
+  .input-label {
+    display: none;
+  }
+  .ps-30 {
+    padding-inline-start: 1rem;
+  }
+
+}
+
+/* For medium screens (tablets) */
+@media only screen and (max-width: 768px) {
+  .sm-screen {
+    text-align: center;
+  }
+}
+
+/* For large screens (desktops) */
+@media only screen and (min-width: 769px) {
+  /* Add styles here */
 }
