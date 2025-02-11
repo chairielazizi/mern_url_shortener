@@ -5,10 +5,11 @@ import axios from "axios";
 
 interface IDataTableProps {
   data: UrlData[];
+  updateReloadState: () => void;
 }
 
 const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
-  const { data } = props;
+  const { data, updateReloadState } = props;
   console.log("Data for table: ", data);
 
   const copyToClipboard = async (url: string) => {
@@ -22,6 +23,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
   const deleteUrl = async (id: string) => {
     const res = await axios.delete(`${API_URL}/shortUrl/${id}`);
     console.log(res);
+    updateReloadState();
   };
 
   const renderTableData = () => {

@@ -2,10 +2,14 @@ import * as React from "react";
 import axios from "axios";
 import { API_URL } from "../../api/config";
 
-interface IFormContainerProps {}
+interface IFormContainerProps {
+  updateReloadState: () => void;
+}
 
-const FormContainer: React.FunctionComponent<IFormContainerProps> = () => {
+const FormContainer: React.FunctionComponent<IFormContainerProps> = (props) => {
   const [originalUrl, setOriginalUrl] = React.useState<string>("");
+  const { updateReloadState } = props;
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -13,6 +17,7 @@ const FormContainer: React.FunctionComponent<IFormContainerProps> = () => {
         originalURL: originalUrl,
       });
       setOriginalUrl("");
+      updateReloadState();
     } catch (error) {
       console.error(error);
     }

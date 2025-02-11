@@ -8,6 +8,11 @@ interface IContainerProps {}
 
 const Container: React.FunctionComponent<IContainerProps> = () => {
   const [data, setData] = React.useState<UrlData[]>([]);
+  const [reload, setReload] = React.useState<boolean>(false);
+
+  const updateReloadState = (): void => {
+    setReload(true);
+  };
 
   const fetchTableData = async () => {
     const res = await axios.get(`${API_URL}/shortUrl`);
@@ -19,16 +24,17 @@ const Container: React.FunctionComponent<IContainerProps> = () => {
     } else {
       console.error("Error: Data is not an array");
     }
+    setReload(false);
   };
 
   React.useEffect(() => {
     fetchTableData();
-  }, []);
+  }, [reload]);
 
   return (
     <>
-      <FormContainer />
-      <DataTable data={data} />
+      <FormContainer updateReloadState={updateReloadState} />
+      <DataTable updateReloadState={updateReloadState} data={data} />
     </>
   );
 };
