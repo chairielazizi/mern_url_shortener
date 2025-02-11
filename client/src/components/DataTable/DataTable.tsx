@@ -2,7 +2,7 @@ import * as React from "react";
 import { API_URL, UrlData } from "../../api/config";
 import { Link } from "react-router";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface IDataTableProps {
