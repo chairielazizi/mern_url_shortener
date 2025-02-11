@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 
 const app = express();
 const databaseUrl = process.env.DATABASE_URL;
@@ -26,3 +27,16 @@ const db = mongoose
   });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // allow requests from this origin
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // allow these methods
+  })
+);
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});

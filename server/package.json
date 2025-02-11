@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "build": "npx tsc",
     "dev": "ts-node-dev --pretty --respawn --transpile-only src/index.ts",
     "dev1": "ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,9 +15,14 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
-    "mongoose": "^8.10.0"
+    "mongoose": "^8.10.0",
+    "nanoid": "^5.0.9"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.97",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
