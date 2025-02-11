@@ -2,6 +2,8 @@ import * as React from "react";
 import { API_URL, UrlData } from "../../api/config";
 import { Link } from "react-router";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface IDataTableProps {
   data: UrlData[];
@@ -15,15 +17,18 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
   const copyToClipboard = async (url: string) => {
     try {
       await navigator.clipboard.writeText(`${API_URL}/shortUrl/${url}`);
-      alert(`URL copied: ${API_URL}/shortUrl/${url}`);
+      //   alert(`URL copied: ${API_URL}/shortUrl/${url}`);
+      toast.success(`URL copied: ${API_URL}/shortUrl/${url}`);
     } catch (error) {
       console.error(error);
+      toast.error("Error copying the selected URL");
     }
   };
   const deleteUrl = async (id: string) => {
     const res = await axios.delete(`${API_URL}/shortUrl/${id}`);
     console.log(res);
     updateReloadState();
+    toast.success("Successfully deleted the URL");
   };
 
   const renderTableData = () => {
@@ -63,6 +68,7 @@ const DataTable: React.FunctionComponent<IDataTableProps> = (props) => {
 
   return (
     <div className="container mx-auto pt-2 pb-10">
+      {/* <ToastContainer /> */}
       <div className="relative overflow-x-auto shadow-sm sm:rounded-lg">
         <table className="w-full table-fixed text-sm text-left  text-gray-500 dark:text-gray-400 rtl:text-right">
           <thead className="text-md uppercase text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

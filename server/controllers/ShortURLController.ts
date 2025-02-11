@@ -21,7 +21,7 @@ export const createURL = async (req: Request, res: Response) => {
 
 export const getAllURL = async (req: Request, res: Response) => {
   try {
-    const shortURLs = await ShortURLModel.find();
+    const shortURLs = await ShortURLModel.find().sort({ createdAt: -1 });
     if (shortURLs) {
       res.status(200).send(shortURLs);
     } else {

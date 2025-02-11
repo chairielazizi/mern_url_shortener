@@ -1,6 +1,8 @@
 import * as React from "react";
 import axios from "axios";
 import { API_URL } from "../../api/config";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface IFormContainerProps {
   updateReloadState: () => void;
@@ -18,13 +20,16 @@ const FormContainer: React.FunctionComponent<IFormContainerProps> = (props) => {
       });
       setOriginalUrl("");
       updateReloadState();
+      toast.success("The link has successfully been shorten!");
     } catch (error) {
       console.error(error);
+      toast.error("Error! The link has already been added!");
     }
   };
 
   return (
     <div className="container mx-auto p-2">
+      <ToastContainer />
       <div className="form my-8 rounded-xl bg-cover">
         <div className="w-full h-full p-20 rounded-xl backdrop-brightness-75">
           <h2 className="text-4xl text-center text-white">URL Form</h2>
