@@ -32,6 +32,7 @@ body {
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  font-family: Kanit, "Helvetica Neue",Helvetica,Arial
 }
 
 h1 {
@@ -99,7 +100,7 @@ button:focus-visible {
   }
   .table-action {
     padding-right:0;
-    padding-left:0;
+    padding-left:5px;
   }
   .sm-form {
     padding: 1rem;
